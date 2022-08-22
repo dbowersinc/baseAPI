@@ -58,20 +58,28 @@ def all():
 @app.route('/search', methods=('GET',))
 def search():
     cafe_list = []
-    location = request.args.get('loc')
+    loc = request.args.get('loc')
     has_toilet = request.args.get('has_toilet')
     name = request.args.get('name')
-    # if has_toilet:
-    #     cafe_has_toilet = db.session.query(Cafe).filter_by(has_toilet=1).all()
-    #     for cafe in cafe_has_toilet:
-    #         cafe_list.append(cafe.to_dict())
-    if location:
-        cafe_location = db.session.query(Cafe).filter_by(location=location).all()
-        if cafe_location:
-            for cafe in cafe_location:
-                cafe_list.append(cafe.to_dict())
+    if loc:
+        if has_toilet:
+            cafe_location_w_toilet = db.session.query(Cafe).filter_by(location=loc, has_toilet=1).all()
+            if cafe_location_w_toilet:
+                for cafe in cafe_location_w_toilet:
+                    cafe_list.append(cafe.to_dict())
             else:
-                return render_template('index.html', term=f"No Record Found for {location}")
+                return render_template('index.html', term=f"No Record Found for {loc} with toilet.")
+        else:
+            cafe_location = db.session.query(Cafe).filter_by(location=loc).all()
+            if cafe_location:
+                for cafe in cafe_location:
+                    cafe_list.append(cafe.to_dict())
+            else:
+                return render_template('index.html', term=f"No Record Found for {loc}")
+    elif has_toilet:
+        cafe_has_toilet = db.session.query(Cafe).filter_by(has_toilet=1).all()
+        for cafe in cafe_has_toilet:
+            cafe_list.append(cafe.to_dict())
 
     return jsonify(cafe_list)
 ## HTTP POST - Create Record
