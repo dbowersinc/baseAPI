@@ -44,7 +44,7 @@ def random_cafe():
     # return render_template('index.html', random_cafe=cafe, cafe_ct=record_count)
     return jsonify(cafe=rand_cafe.to_dict())
 
-@app.route('/all', methods=('GET',))
+@app.route('/cafes', methods=('GET',))
 def all():
     cafes = db.session.query(Cafe).all()
     cafe_list = []
