@@ -40,16 +40,7 @@ def random_cafe():
     # rand_result = random.randint(1,record_count)
     cafes = db.session.query(Cafe).all()
     rand_cafe = random.choice(cafes)
-    # response = jsonify({'cafe':{
-    #     'name':rand_cafe.name,
-    #     'img_url':rand_cafe.img_url,
-    #     'map_url':rand_cafe.map_url,
-    #     'location':rand_cafe.location,
-    #     'seats':rand_cafe.seats,
-    #     'has_toilet':rand_cafe.has_toilet,
-    #     'can_take_calls':rand_cafe.can_take_calls,
-    #     'coffee_price':rand_cafe.coffee_price,
-    # }})
+    # response = jsonify(cafe=jsonify(name=rand_cafe.name, map_url=rand_cafe.map_url)
     # return render_template('index.html', random_cafe=cafe, cafe_ct=record_count)
     return jsonify(cafe=rand_cafe.to_dict())
 
@@ -66,8 +57,23 @@ def all():
 ## HTTP GET - Read Record
 @app.route('/search', methods=('GET',))
 def search():
-    search_for = request.args.get('test')
-    return render_template('index.html', term=search_for)
+    cafe_list = []
+    location = request.args.get('loc')
+    has_toilet = request.args.get('has_toilet')
+    name = request.args.get('name')
+    # if has_toilet:
+    #     cafe_has_toilet = db.session.query(Cafe).filter_by(has_toilet=1).all()
+    #     for cafe in cafe_has_toilet:
+    #         cafe_list.append(cafe.to_dict())
+    if location:
+        cafe_location = db.session.query(Cafe).filter_by(location=location).all()
+        if cafe_location:
+            for cafe in cafe_location:
+                cafe_list.append(cafe.to_dict())
+            else:
+                return render_template('index.html', term=f"No Record Found for {location}")
+
+    return jsonify(cafe_list)
 ## HTTP POST - Create Record
 
 ## HTTP PUT/PATCH - Update Record
