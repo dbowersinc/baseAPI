@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, render_template, request
+from flask import Blueprint, jsonify, render_template, request, current_app
 from .cafes_table import Cafe
 import random
 from .db import db
@@ -95,3 +95,16 @@ def update_price(cafe_id):
 
 
 ## HTTP DELETE - Delete Record
+@bp.route('/delete/<cafe_id>', methods=['DELETE'])
+def delete_cafe(cafe_id):
+    api_key = request.args.get('api_key')
+    if api_key == current_app.config['API_KEY']:
+        cafe = db.session.query(Cafe).get(cafe_id)
+        if cafe:
+            db.session.delete(cafe)
+            db.session.commit()
+            return jsonify(response={"success": "Successfully deleted cafe."})
+        else:
+            return jsonify(error={"Not Found": "Sorry a cafe with that id was not found in the database."})
+    else:
+        return jsonify(error={"Access Denied": "You don't have access to this resource."})

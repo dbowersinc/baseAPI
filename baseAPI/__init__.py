@@ -10,6 +10,7 @@ def create_app(test_config=None):
         SQLALCHEMY_DATABASE_URI='sqlite:///../cafes.db',
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
         WTF_CSRF_SECRET_KEY='dev',
+        API_KEY='79ttAQIBG89Gk2VEf4hrGQ',
     )
 
     if test_config is None:
