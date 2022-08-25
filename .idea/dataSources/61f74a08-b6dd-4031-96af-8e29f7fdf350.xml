@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="cafes">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.32">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.43">
     <root id="1">
       <ServerVersion>3.36.0</ServerVersion>
     </root>
@@ -1342,13 +1342,13 @@
     </column>
     <index id="486" parent="473" name="sqlite_autoindex_cafe_1">
       <ColNames>name</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <key id="487" parent="473">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>id</UnderlyingIndexColNames>
     </key>
     <key id="488" parent="473">
       <ColNames>name</ColNames>
