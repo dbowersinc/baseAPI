@@ -1,0 +1,15 @@
+MANIFEST.in
+setup.py
+baseAPI/__init__.py
+baseAPI/cafes_api.py
+baseAPI/cafes_forms.py
+baseAPI/cafes_table.py
+baseAPI/db.py
+baseAPI.egg-info/PKG-INFO
+baseAPI.egg-info/SOURCES.txt
+baseAPI.egg-info/dependency_links.txt
+baseAPI.egg-info/requires.txt
+baseAPI.egg-info/top_level.txt
+baseAPI/templates/index.html
+baseAPI/templates/cafes_api/cafes_edit.html
+baseAPI/templates/cafes_api/index.html
