@@ -1,0 +1,2 @@
+graft baseAPI/templates
+global-exclude *.pyc
