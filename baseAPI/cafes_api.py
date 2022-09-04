@@ -8,10 +8,6 @@ from .cafes_forms import NewCafeForm, EditCafeForm
 bp = Blueprint('cafes', __name__)
 
 
-@bp.route("/")
-def home():
-    return render_template("index.html")
-
 @bp.route("/random", methods=('GET',))
 def random_cafe():
     # record_count = Cafe.query.count()
@@ -22,7 +18,7 @@ def random_cafe():
     # return render_template('index.html', random_cafe=cafe, cafe_ct=record_count)
     return jsonify(cafe=rand_cafe.to_dict())
 
-@bp.route('/all', methods=('GET',))
+@bp.route('/', methods=('GET',))
 def all():
     cafes = db.session.query(Cafe).all()
     cafe_list = []

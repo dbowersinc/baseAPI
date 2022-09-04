@@ -1,15 +1,7 @@
-# 🚀 Welcome to your new awesome project!
+# Cafe API
 
-This project has been created using **webpack-cli**, you can now run
+---
 
-```
-npm run build
-```
+Base Flask REST API for cafes.
 
-or
 
-```
-yarn build
-```
-
-to bundle your application
