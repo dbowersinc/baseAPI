@@ -1,7 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
-import AppLink from "./components/AppLink.vue"
+import AppLink from "./components/AppLink.vue";
+import NavLink from "./components/NavLink.vue";
 </script>
 
 <template>
@@ -13,9 +14,9 @@ import AppLink from "./components/AppLink.vue"
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExample03">
-        <AppLink to="/">Home </AppLink>
-        <AppLink to="/about">About </AppLink>
-        <AppLink to="/cafes">Cafes </AppLink>
+        <NavLink to="/" class="hover:bg-sky-700">Home </NavLink>
+        <NavLink to="/about" class="hover:bg-sky-700">About </NavLink>
+        <NavLink to="/cafes" class="hover:bg-sky-700">Cafes </NavLink>
         <form role="search">
           <input class="form-control" type="search" placeholder="Search" aria-label="Search">
         </form>
@@ -24,7 +25,12 @@ import AppLink from "./components/AppLink.vue"
   </nav>
 
 
-  <RouterView />
+
+  <RouterView></RouterView>
+
+  <footer>
+    This is a footer
+  </footer>
 </template>
 
 <style scoped>
