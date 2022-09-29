@@ -6,31 +6,35 @@ import NavLink from "./components/NavLink.vue";
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Expand at sm</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExample03">
-        <NavLink to="/" class="hover:bg-sky-700">Home </NavLink>
-        <NavLink to="/about" class="hover:bg-sky-700">About </NavLink>
-        <NavLink to="/cafes" class="hover:bg-sky-700">Cafes </NavLink>
-        <form role="search">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        </form>
+  <div>
+    <div class="w-full">
+      <div class="max-w-7xl mx-auto">
+        <div class="relative flex">
+        <div class="relative flex ml-auto">
+          <nav class="text-sm leading-6">
+            <ul class="flex space-x-8">
+              <li>
+                <NavLink to="/" class="hover:bg-sky-700">Home </NavLink>
+              </li>
+              <li>
+                <NavLink to="/about" class="hover:bg-sky-700">About </NavLink>
+              </li>
+              <li>
+                <NavLink to="/cafes" class="hover:bg-sky-700">Cafes </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        </div>
       </div>
     </div>
-  </nav>
-
-
-
-  <RouterView></RouterView>
-
-  <footer>
-    This is a footer
-  </footer>
+    <div class="max-w-7xl mx-auto">
+    <RouterView></RouterView>
+    </div>
+    <footer class="max-w-7xl mx-auto">
+      This is a footer
+    </footer>
+  </div>
 </template>
 
 <style scoped>

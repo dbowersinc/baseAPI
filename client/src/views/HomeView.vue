@@ -3,10 +3,21 @@ import TheWelcome from "../components/TheWelcome.vue";
 </script>
 
 <template>
-  <main class="container mx-auto">
-     <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-<!--    <TheWelcome />-->
-  </main>
+  <div>
+    <section>
+      <nav>
+        <div>
+
+        </div>
+
+      </nav>
+    </section>
+    <main>
+       <h1 className="text-center text-3xl font-bold underline">
+        Hello world!
+      </h1>
+  <!--    <TheWelcome />-->
+    </main>
+  </div>
+
 </template>
