@@ -4,14 +4,6 @@ import TheWelcome from "../components/TheWelcome.vue";
 
 <template>
   <div>
-    <section>
-      <nav>
-        <div>
-
-        </div>
-
-      </nav>
-    </section>
     <main>
        <h1 className="text-center text-3xl font-bold underline">
         Hello world!

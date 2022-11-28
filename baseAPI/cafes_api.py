@@ -33,25 +33,25 @@ def all():
 def search():
     cafe_list = []
     loc = request.args.get('loc')
-    has_toilet = request.args.get('has_toilet')
+    toilet = request.args.get('has_toilet')
     name = request.args.get('name')
     if loc:
-        if has_toilet:
-            cafe_location_w_toilet = db.session.query(Cafe).filter_by(location=loc, has_toilet=1).all()
+        if toilet:
+            cafe_location_w_toilet = db.session.query(Cafe).filter(Cafe.location.like('%' + loc + '%')).filter(Cafe.has_toilet == toilet).all()
             if cafe_location_w_toilet:
                 for cafe in cafe_location_w_toilet:
                     cafe_list.append(cafe.to_dict())
             else:
-                return render_template('index.html', term=f"No Record Found for {loc} with toilet.")
+                return jsonify(cafe_list)
         else:
-            cafe_location = db.session.query(Cafe).filter_by(location=loc).all()
+            cafe_location = db.session.query(Cafe).filter(Cafe.location.like('%' + loc + '%')).filter(Cafe.has_toilet == toilet).all()
             if cafe_location:
                 for cafe in cafe_location:
                     cafe_list.append(cafe.to_dict())
             else:
-                return render_template('index.html', term=f"No Record Found for {loc}")
-    elif has_toilet:
-        cafe_has_toilet = db.session.query(Cafe).filter_by(has_toilet=1).all()
+                return jsonify(cafe_list)
+    elif toilet:
+        cafe_has_toilet = db.session.query(Cafe).filter_by(has_toilet=toilet).all()
         for cafe in cafe_has_toilet:
             cafe_list.append(cafe.to_dict())
 

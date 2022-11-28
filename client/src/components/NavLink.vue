@@ -2,8 +2,8 @@
 <AppLink
   v-bind="$attrs"
   class="nav-link"
-  active-class="bg-yellow-300 active"
-  inactive-class="bg-green-300"
+  active-class="dark active"
+  inactive-class="light"
   >
   <slot />
 </AppLink>
